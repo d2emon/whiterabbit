@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  {% load staticfiles %}
+  <title>{% block title %}{% endblock %}, следуй за белым кроликом&hellip;</title>
+  <meta charset="UTF-8">  
+  <link rel="stylesheet" type="text/css" href="{% static "style/style.css" %}" media="all" />
+  <!--[if IE 7]><link rel="stylesheet" type="text/css" href="style/css/ie7.css" media="all" /><![endif]-->
+  <script type="text/javascript" src="{% static "js/jquery-1.5.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/ddsmoothmenu.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/quicksand.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/portfolio.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/scripts.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/jquery.infieldlabel.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/twitter.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/jquery.prettyPhoto.js" %}"></script>
+  <script type="text/javascript">$(function(){ $("label").inFieldLabels(); });</script>
+  <script type="text/javascript">
+getTwitters('twitter', {
+    id: 'elemisdesign',
+    count: 1,
+    enableLinks: true,
+    ignoreReplies: false,
+    template: '<span class="twitterPrefix"><span class="twitterStatus">%text%</span>',
+    newwindow: true
+});
+  </script>
+</head>
+<body>
+  <div id="container">
+    <!-- Begin Header Wrapper -->
+    <div id="page-top">
+      <div id="header-wrapper">
+        <!-- Begin Header -->
+        <div id="header">
+          <div id="logo">Follow the <a href="{% url "greet:index" %}"><h1>WhiteRabbit</h1></a></div>
+          <!-- Logo -->
+          <!-- Begin Menu -->
+          <div id="menu-wrapper">
+            <div id="smoothmenu1" class="ddsmoothmenu">
+              <ul>
+                <li><a href="{% url "greet:index" %}" class="selected">Главная</a></li>
+                <li><a href="{% url "greet:gallery" %}">Выставка</a></li>
+                <li><a href="{% url "greet:service" %}">Служебные</a></li>
+                <li><a href="{% url "greet:full" %}">Прочее</a>
+                  <ul>
+                    <li><a href="{% url "greet:full" %}">Полный экран</a></li>
+                    <li><a href="{% url "greet:buttons" %}">Кнопки</a></li>
+                  </ul>
+                </li>
+                <li><a href="{% url "greet:contact" %}">Контакты</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- End Menu -->
+        </div>
+        <!-- End Header -->
+      </div>
+    </div>
+    <!-- End Header Wrapper -->
+    <!-- Begin Wrapper -->
+    <div id="wrapper">
+      <!-- Begin Intro -->
+      <div class="intro">
+			  <h1>Приветствую, {% block username %}{% endblock %}!</h1>
+			  <h2>Готов вкалывать?</h2>
+			  <h3>Сегодня у нас: {% block today %}{% endblock %}</h3>
+      </div>
+      <!-- End Intro -->
+      {%block content %}{% endblock %}
+    </div>
+    <!-- End Wrapper -->
+    <div class="clearfix"></div>
+    <div class="push"></div>
+    <!-- Begin Footer -->
+    <div id="footer-wrapper"> 
+      <div id="footer">
+        <div id="footer-content">
+          <!-- Begin Copyright -->
+          <div id="copyright">
+            <p>Copyright &copy; <a href="#">WhiteRabbit</a> - All Rights Reserved | Design By <a target="_blank" href="http://elemisfreebies.com/">elemis</a></p>
+          </div>
+          <!-- End Copyright -->
+          <!-- Begin Social Icons -->
+          <div id="socials">
+            <ul>
+              <li><a href="#"><img src="{% static "images/icon-rss.png" %}" alt="" /></a></li>
+              <li><a href="#"><img src="{% static "images/icon-twitter.png" %}" alt="" /></a></li>
+              <li><a href="#"><img src="{% static "images/icon-dribble.png" %}" alt="" /></a></li>
+              <li><a href="#"><img src="{% static "images/icon-tumblr.png" %}" alt="" /></a></li>
+              <li><a href="#"><img src="{% static "images/icon-flickr.png" %}" alt="" /></a></li>
+              <li><a href="#"><img src="{% static "images/icon-facebook.png" %}" alt="" /></a></li>
+            </ul>
+          </div>
+          <!-- End Social Icons -->
+        </div>
+      </div>
+    </div>
+    <!-- End Footer -->
+
+	</div>
+</body>
+</html>

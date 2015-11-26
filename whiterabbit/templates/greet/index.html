@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block title %}{{ username }}{% endblock %}
+{% block username %}{{ username }}{% endblock %}
+{% block today %}{{ today }}{% endblock %}
+{% block content %}
+    {%load staticfiles %}
+      <!-- Begin About -->
+      <div id="about">
+        <div class="one-fourth"><a href="#"><img src="{% static "images/art/home-1.jpg" %}" alt="" /></a>
+				  <h4>Сегодня </h4>
+<ul>
+	<li>родились</li>
+	<li>умерли</li>
+</ul>
+        </div>
+        <div class="one-fourth"><a href="#"><img src="{% static "images/art/home-2.jpg" %}" alt="" /></a>
+          <h4>Maecenas Tincidunt</h4>
+          <p>Nulla facilisi. Aenean porttitor cursus aliquet. Praesent sit amet dictum lacus. Risus eget augue.</p>
+<p>Почту проверил?</p>
+<p>В соцсети зашел?</p>
+<p>Расписание на сегодня:</p>
+&nbsp;
+        </div>
+        <div class="one-fourth"><a href="#"><img src="{% static "images/art/home-3.jpg" %}" alt="" /></a>
+          <h4>Pellentesque suscipit</h4>
+          <p>Vivamus placerat viverra posuere. Duis quis luctus diam. Aliquam a mi id vel orci lectus.</p>
+        </div>
+        <div class="one-fourth last"><a href="#"><img src="{% static "images/art/home-4.jpg" %}" alt="" /></a>
+          <h4>Donec Eust Adipiscing</h4>
+          <p>Sed eu lorem sed lectus interdum vehicula. Praesent sit amet risus eget augue semper.</p>
+        </div>
+      </div>
+      <!-- End About -->
+{% endblock %}
