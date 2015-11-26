@@ -1,0 +1,100 @@
+- model: answerer.answer
+  pk: 1
+  fields: 
+    title: Ответ 1
+    description: Бесспорно
+- model: answerer.answer
+  pk: 2
+  fields: 
+    title: Ответ 2
+    description: Предрешено
+- model: answerer.answer
+  pk: 3
+  fields: 
+    title: Ответ 3
+    description: Никаких сомнений
+- model: answerer.answer
+  pk: 4
+  fields: 
+    title: Ответ 4
+    description: Определённо да
+- model: answerer.answer
+  pk: 5
+  fields: 
+    title: Ответ 5
+    description: Можешь быть уверен в этом
+- model: answerer.answer
+  pk: 6
+  fields: 
+    title: Ответ 6
+    description: Мне кажется — «да»
+- model: answerer.answer
+  pk: 7
+  fields: 
+    title: Ответ 7
+    description: Вероятнее всего
+- model: answerer.answer
+  pk: 8
+  fields: 
+    title: Ответ 8
+    description: Хорошие перспективы
+- model: answerer.answer
+  pk: 9
+  fields: 
+    title: Ответ 9
+    description: Знаки говорят — «да»
+- model: answerer.answer
+  pk: 10
+  fields: 
+    title: Ответ 10
+    description: Да
+- model: answerer.answer
+  pk: 11
+  fields: 
+    title: Ответ 11
+    description: Пока не ясно, попробуй снова
+- model: answerer.answer
+  pk: 12
+  fields: 
+    title: Ответ 12
+    description: Спроси позже
+- model: answerer.answer
+  pk: 13
+  fields: 
+    title: Ответ 13
+    description: Лучше не рассказывать
+- model: answerer.answer
+  pk: 14
+  fields: 
+    title: Ответ 14
+    description: Сейчас нельзя предсказать
+- model: answerer.answer
+  pk: 15
+  fields: 
+    title: Ответ 15
+    description: Сконцентрируйся и спроси опять
+- model: answerer.answer
+  pk: 16
+  fields: 
+    title: Ответ 16
+    description: Даже не думай
+- model: answerer.answer
+  pk: 17
+  fields: 
+    title: Ответ 17
+    description: Мой ответ — «нет»
+- model: answerer.answer
+  pk: 18
+  fields: 
+    title: Ответ 18
+    description: По моим данным — «нет»
+- model: answerer.answer
+  pk: 19
+  fields: 
+    title: Ответ 19
+    description: Перспективы не очень хорошие
+- model: answerer.answer
+  pk: 20
+  fields: 
+    title: Ответ 20
+    description: Весьма сомнительно
