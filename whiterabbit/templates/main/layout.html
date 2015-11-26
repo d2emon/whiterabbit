@@ -64,7 +64,7 @@ getTwitters('twitter', {
       <div class="intro">
 			  <h1>Приветствую, {% block username %}{% endblock %}!</h1>
 			  <h2>Готов вкалывать?</h2>
-			  <h3>Сегодня у нас: {% block today %}{% endblock %}</h3>
+        <h3>Сегодня у нас: {% now "DATE_FORMAT" %}</h3>
       </div>
       <!-- End Intro -->
       {%block content %}{% endblock %}
