@@ -464,7 +464,7 @@ em {
 .ddsmoothmenu ul li a, .ddsmoothmenu ul li a:visited {
 	color: #565656;
 }
-.ddsmoothmenu ul li a.selected { /*CSS class that's dynamically added to the currently active menu items' LI A element*/
+.ddsmoothmenu ul li a.current_item { /*CSS class that's dynamically added to the currently active menu items' LI A element*/
 	color: #5d8ba6;
 }
 .ddsmoothmenu ul li a:hover {

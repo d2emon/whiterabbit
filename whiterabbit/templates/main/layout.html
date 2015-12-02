@@ -36,21 +36,9 @@ getTwitters('twitter', {
           <div id="logo">Follow the <a href="{% url "greet:index" %}"><h1>WhiteRabbit</h1></a></div>
           <!-- Logo -->
           <!-- Begin Menu -->
-          <div id="menu-wrapper">
-            <div id="smoothmenu1" class="ddsmoothmenu">
-              <ul>
-                <li><a href="{% url "greet:index" %}" class="selected">Главная</a></li>
-                <li><a href="{% url "greet:gallery" %}">Выставка</a></li>
-                <li><a href="{% url "greet:service" %}">Служебные</a></li>
-                <li><a href="{% url "greet:full" %}">Прочее</a>
-                  <ul>
-                    <li><a href="{% url "greet:full" %}">Полный экран</a></li>
-                    <li><a href="{% url "greet:buttons" %}">Кнопки</a></li>
-                  </ul>
-                </li>
-                <li><a href="{% url "greet:contact" %}">Контакты</a></li>
-              </ul>
-            </div>
+          <div id="menu-wrapper" class="ddsmoothmenu">
+            {% load sitetree %}
+            {% sitetree_menu from "navigation" include "trunk" %}
           </div>
           <!-- End Menu -->
         </div>
