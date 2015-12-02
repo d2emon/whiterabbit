@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'sitetree',
     'answerer',
+    'tasks',
 )
 
 MIDDLEWARE_CLASSES = (

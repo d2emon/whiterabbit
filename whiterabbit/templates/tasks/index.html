@@ -1,0 +1,12 @@
+{% extends "main/layout.html" %}
+{% block title %}{{ username }}{% endblock %}
+{% block username %}{{ username }}{% endblock %}
+{% block content %}
+  {% if projects %}
+    {% for project in projects %}
+      <li><a href="{% url "tasks:project" project=project.pk %}">{{ project.title }}</a></li>
+    {% endfor %}
+  {% else %}
+    <h1>You have no active projects!</h1>
+  {% endif %}
+{% endblock %}

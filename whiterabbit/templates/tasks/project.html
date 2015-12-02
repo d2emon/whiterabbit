@@ -1,0 +1,54 @@
+{% extends "main/layout.html" %}
+{% block title %}{{ username }}{% endblock %}
+{% block username %}{{ username }}{% endblock %}
+{% block content %}
+  <h1>Project {{ project.title }}</h1>
+  <h2>Tasks</h2>
+  <ul>
+    {% for task in tasks %}
+    <li>
+      <a href="#">{{ task.task.title }}</a>
+      {% if task.subtasks %}
+      <ul>
+        {% for subtask in task.subtasks %}
+        <li>
+          <a href="#">{{ subtask.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </li>
+    {% endfor %}
+    <li><a href="#">Add task</a></li>
+  </ul>
+  <div>
+    <div>
+      [nowhite]
+        {% for i in project_span %}
+        day {{ day_span }} 
+        {% endfor %}
+        |
+      [/nowhite]
+    </div>
+    <div>
+      {% for row in graph %}
+      [nowhite]
+      {{ row.offset }}
+      [/nowhite]
+      {{ row.realization }}
+      [nowhite]
+      {% if row.has_subtasks %}
+      {{ row.duration }}
+      \
+      {% else %}
+      {{ row.duration }}
+      #
+      {% endif %}
+      [/nowhite]
+      {% endfor %}
+    </div>
+    <div>
+  {{ project.description }}
+    </div>
+  </div>
+{% endblock %}
