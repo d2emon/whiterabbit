@@ -1,11 +1,12 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 
 
 class RandomCard(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField(null=True, blank=True)
-    url = models.URLField(null=True, blank=True)
-    image = models.ImageField(null=True, blank=True, upload_to="upload")
+    title = models.CharField("Название", max_length=200)
+    description = models.TextField("Описание", null=True, blank=True)
+    url = models.URLField("URL", null=True, blank=True)
+    image = models.ImageField("Изображение", null=True, blank=True, upload_to="upload")
 
     @classmethod
     def random_item(cls):
