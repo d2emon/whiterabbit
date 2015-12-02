@@ -22,31 +22,35 @@
     <li><a href="#">Add task</a></li>
   </ul>
   <div>
-    <div>
-      [nowhite]
-        {% for i in project_span %}
-        day {{ day_span }} 
-        {% endfor %}
-        |
-      [/nowhite]
-    </div>
-    <div>
-      {% for row in graph %}
-      [nowhite]
-      {{ row.offset }}
-      [/nowhite]
-      {{ row.realization }}
-      [nowhite]
-      {% if row.has_subtasks %}
-      {{ row.duration }}
-      \
-      {% else %}
-      {{ row.duration }}
-      #
-      {% endif %}
-      [/nowhite]
+    <table>
+      <tr>
+        <td>&nbsp;</td>
+      {% for d in project_span %}
+        <td>{{ d }}</td> 
       {% endfor %}
-    </div>
+      </tr>
+      {% for row in graph %}
+      <tr>
+      <td>
+        {{ row.task.title }}
+      [ {{ row.offset }} ]
+        {% for i in row.offset %}
+          {{ i }}
+        {% endfor %}
+      [ {{ row.realization }} ]
+      </td>
+      {% for i in row.duration %}
+        <td>
+        {% if row.has_subtasks %}
+        -------
+        {% else %}
+        #######
+        {% endif %}
+        </td>
+      {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
     <div>
   {{ project.description }}
     </div>

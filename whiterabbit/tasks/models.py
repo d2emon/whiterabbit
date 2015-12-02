@@ -62,7 +62,7 @@ class Task(RandomCard):
         return delta.days + 1
 
     def get_days_span(self):
-        delta = self.start_date - self.end_date
+        delta = self.end_date - self.start_date
         return delta.days + 1
 
     def get_realization(self):

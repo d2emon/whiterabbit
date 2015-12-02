@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404
 from tasks.models import Project
-
+from datetime import timedelta
+from copy import copy
 
 username = "МихалычЪ"
 
 
 def _day_generator(start):
-    start_date = start
+    start_date = copy(start)
     while True:
         yield start_date
-        start_date = start_date + 1
+        start_date = start_date + timedelta(days=1)
 
 
 def index(request):
@@ -36,8 +37,9 @@ def project(request, project):
     graph = []
     for task in project.top_down_tasks():
         graph.append({
-            'offset': task.get_offset(project_start),
-            'duration': task.get_days_span(),
+            'task': task,
+            'offset': range(task.get_offset(project_start)),
+            'duration': range(task.get_days_span()),
             'has_subtasks': task.has_subtasks(),
             'realization': task.get_general_realization(),
         })
@@ -63,7 +65,7 @@ def project(request, project):
         "username": username,
         'project': project,
         'project_span': project_span,
-        'day_span': 7,
+        'day_span': range(7),
         'graph': graph,
         'tasks': top_sub_tasks,
     })
