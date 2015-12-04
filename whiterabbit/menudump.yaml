@@ -1,0 +1,51 @@
+[
+- model: sitetree.tree
+  fields: 
+    alias: "navigation"
+    title: "\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"
+- model: sitetree.treeitem 
+  pk: 1
+  fields: 
+    url: "greet:index"
+    title: "\u0413\u043b\u0430\u0432\u043d\u0430\u044f"
+    urlaspattern: true
+- model: sitetree.treeitem 
+  pk: 2
+  fields: 
+    url: "greet:gallery"
+    title: "\u0412\u044b\u0441\u0442\u0430\u0432\u043a\u0430"
+    urlaspattern: true
+- model: sitetree.treeitem 
+  pk: 3
+  fields: 
+    url: "greet:service"
+    title: "\u0421\u043b\u0443\u0436\u0435\u0431\u043d\u044b\u0435"
+    urlaspattern: true
+- model: sitetree.treeitem 
+  pk: 4
+  fields: 
+    url: "greet:full"
+    title: "\u041f\u0440\u043e\u0447\u0435\u0435"
+    urlaspattern: true
+- model: sitetree.treeitem 
+  fields: 
+    url: "greet:contact"
+    title: "\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b"
+    urlaspattern: true
+- model: sitetree.treeitem 
+  fields: 
+    url: "answerer:index"
+    title: "\u041e\u0442\u0432\u0435\u0442"
+    urlaspattern: true
+- model: sitetree.treeitem 
+  fields: 
+    parent: 4
+    url: "greet:full"
+    title: "\u041f\u043e\u043b\u043d\u044b\u0439 \u044d\u043a\u0440\u0430\u043d"
+    urlaspattern: true
+- model: sitetree.treeitem 
+  fields: 
+    parent: 4
+    url: "greet:buttons"
+    title: "\u041a\u043d\u043e\u043f\u043a\u0438"
+    urlaspattern: true
