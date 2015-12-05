@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'sitetree',
     'answerer',
     'tasks',
+    'user_profile',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -77,6 +78,8 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = "user_profile.UserProfile"
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -89,7 +92,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
