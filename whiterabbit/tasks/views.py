@@ -62,7 +62,6 @@ def project(request, project):
             'subtasks': sub_tasks.get(task.id),
         })
     return render(request, 'tasks/project.html', {
-        "username": username,
         'project': project,
         'project_span': project_span,
         'day_span': range(7),
