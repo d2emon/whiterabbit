@@ -1,10 +1,16 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from tasks.models import Project
+from tasks.forms import ProjectForm
 from datetime import timedelta
 from copy import copy
 
-username = "МихалычЪ"
+
+def test_permissions(func):
+    def inner(request, *args, **kwargs):
+        return func(request, *args, **kwargs)
+
+    return inner
 
 
 def _day_generator(start):
@@ -16,16 +22,29 @@ def _day_generator(start):
 
 def index(request):
     return render(request, 'tasks/index.html', {
-        "username": username,
         'projects': Project.objects.all(),
     })
 
 
+# @test_permissions
+def new_project(request):
+    if request.method == 'POST':
+        project_form = ProjectForm(request.POST)
+        if project_form.is_valid():
+            project = project_form.save(commit=False)
+            project.save()
+            return redirect('tasks:project', project=project.pk)
+    else:
+        project_form = ProjectForm()
+
+    return render(request, 'tasks/new_project.html', {
+        'project_form': project_form,
+    })
+
+
+@test_permissions
 def project(request, project):
     project = get_object_or_404(Project, pk=project)
-
-    # Test wrong team
-    # Test wrong user
 
     project_start, project_end = project.get_span()
     delta = project_end - project_start

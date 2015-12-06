@@ -15,9 +15,15 @@ class Project(RandomCard):
         return self.task_set.filter(parent_task__isnull=True)
 
     def get_span(self):
-        start_date = min(task.start_date for task in self.top_tasks())
-        end_date = max(task.end_date for task in self.top_tasks())
-        return start_date, end_date
+        start_dates = [task.start_date for task in self.top_tasks()]
+        end_dates = [task.end_date for task in self.top_tasks()]
+
+        if not list(start_dates):
+            start_dates = (date.today(),)
+        if not list(end_dates):
+            end_dates = (date.today(),)
+
+        return min(start_dates), max(end_dates)
 
     class Meta:
         verbose_name = u'проект'
