@@ -53,16 +53,6 @@ def project(request, project):
     for i in range(delta.days + 1):
         project_span.append(gen.next)
 
-    graph = []
-    for task in project.top_down_tasks():
-        graph.append({
-            'task': task,
-            'offset': range(task.get_offset(project_start)),
-            'duration': range(task.get_days_span()),
-            'has_subtasks': task.has_subtasks(),
-            'realization': task.get_general_realization(),
-        })
-
     top_tasks = []
     sub_tasks = {}
     for task in project.top_down_tasks():
@@ -74,16 +64,11 @@ def project(request, project):
                 sub_tasks[top_id] = []
             sub_tasks[top_id].append(task)
 
-    top_sub_tasks = []
-    for task in project.top_tasks():
-        top_sub_tasks.append({
-            'task': task,
-            'subtasks': sub_tasks.get(task.id),
-        })
+    top_sub_tasks = [task for task in project.top_tasks()]
     return render(request, 'tasks/project.html', {
         'project': project,
         'project_span': project_span,
         'day_span': range(7),
-        'graph': graph,
         'tasks': top_sub_tasks,
+        'unfinished': project.top_unfinished_tasks(),
     })

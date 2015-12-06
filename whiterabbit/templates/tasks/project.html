@@ -3,54 +3,37 @@
 {% block username %}{{ username }}{% endblock %}
 {% block content %}
   <h1>Project {{ project.title }}</h1>
-  <h2>Tasks</h2>
-  <ul>
-    {% for task in tasks %}
-    <li>
-      <a href="#">{{ task.task.title }}</a>
-      {% if task.subtasks %}
-      <ul>
-        {% for subtask in task.subtasks %}
-        <li>
-          <a href="#">{{ subtask.title }}</a>
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </li>
-    {% endfor %}
-    <li><a href="#">Add task</a></li>
-  </ul>
+  <h2>Unfinished tasks</h2>
+  {% if unfinished %}
+    <ul>
+      {% for row in unfinished %}
+      <li><a href="#">{{ row.title }}</a> - {{ row.get_general_realization }}% ready</li>
+      {% endfor %}
+    </ul>  
+  {% else %}
+    <h3>No unfinished tasks!</h3>
+  {% endif %}
+  <h2>General progress</h2>
   <div>
-    <table>
-      <tr>
-        <td>&nbsp;</td>
-      {% for d in project_span %}
-        <td>{{ d }}</td> 
-      {% endfor %}
-      </tr>
-      {% for row in graph %}
-      <tr>
-      <td>
-        {{ row.task.title }}
-      [ {{ row.offset }} ]
-        {% for i in row.offset %}
-          {{ i }}
-        {% endfor %}
-      [ {{ row.realization }} ]
-      </td>
-      {% for i in row.duration %}
-        <td>
+    <ul>
+    {% if tasks %}
+      {% for row in tasks %}
+      <li>
+        <a href="#">{{ row.title }}</a> - {{ row.get_general_realization }}% ready
         {% if row.has_subtasks %}
-        -------
-        {% else %}
-        #######
+        <ul>
+          {% for sub in row.get_subtasks %}
+          <li>
+            <a href="#">{{ sub.title }}</a> - <p>{{ sub.get_general_estimate }} days ({{ sub.start_date }} - {{ sub.end_date }})</p>
+          </li>
+          {% endfor %}
+        </ul>
         {% endif %}
-        </td>
+      </li>
       {% endfor %}
-      </tr>
-      {% endfor %}
-    </table>
+    {% endif %}
+      <li><a href="#">Add task</a></li>
+    </ul>
     <div>
   {{ project.description }}
     </div>
