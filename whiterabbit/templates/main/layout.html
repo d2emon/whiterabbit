@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
   {% load staticfiles %}
-  <title>{% block title %}{% endblock %}, следуй за белым кроликом&hellip;</title>
+<title>{{ user.first_name }}, следуй за белым кроликом&hellip;</title>
   <meta charset="UTF-8">  
   <link rel="stylesheet" type="text/css" href="{% static "style/style.css" %}" media="all" />
   <!--[if IE 7]><link rel="stylesheet" type="text/css" href="style/css/ie7.css" media="all" /><![endif]-->
@@ -36,21 +36,9 @@ getTwitters('twitter', {
           <div id="logo">Follow the <a href="{% url "greet:index" %}"><h1>WhiteRabbit</h1></a></div>
           <!-- Logo -->
           <!-- Begin Menu -->
-          <div id="menu-wrapper">
-            <div id="smoothmenu1" class="ddsmoothmenu">
-              <ul>
-                <li><a href="{% url "greet:index" %}" class="selected">Главная</a></li>
-                <li><a href="{% url "greet:gallery" %}">Выставка</a></li>
-                <li><a href="{% url "greet:service" %}">Служебные</a></li>
-                <li><a href="{% url "greet:full" %}">Прочее</a>
-                  <ul>
-                    <li><a href="{% url "greet:full" %}">Полный экран</a></li>
-                    <li><a href="{% url "greet:buttons" %}">Кнопки</a></li>
-                  </ul>
-                </li>
-                <li><a href="{% url "greet:contact" %}">Контакты</a></li>
-              </ul>
-            </div>
+          <div id="menu-wrapper" class="ddsmoothmenu">
+            {% load sitetree %}
+            {% sitetree_menu from "navigation" include "trunk" %}
           </div>
           <!-- End Menu -->
         </div>
@@ -62,8 +50,8 @@ getTwitters('twitter', {
     <div id="wrapper">
       <!-- Begin Intro -->
       <div class="intro">
-			  <h1>Приветствую, {% block username %}{% endblock %}!</h1>
-			  <h2>Готов вкалывать?</h2>
+        <h1>Приветствую, {{ user.first_name }}!</h1>
+        <h2>{{ user.motto }}</h2>
         <h3>Сегодня у нас: {% now "DATE_FORMAT" %}</h3>
       </div>
       <!-- End Intro -->

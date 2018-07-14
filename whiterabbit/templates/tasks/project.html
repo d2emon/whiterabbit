@@ -1,0 +1,41 @@
+{% extends "main/layout.html" %}
+{% block title %}{{ username }}{% endblock %}
+{% block username %}{{ username }}{% endblock %}
+{% block content %}
+  <h1>Project {{ project.title }}</h1>
+  <h2>Unfinished tasks</h2>
+  {% if unfinished %}
+    <ul>
+      {% for row in unfinished %}
+      <li><a href="#">{{ row.title }}</a> - {{ row.get_general_realization }}% ready</li>
+      {% endfor %}
+    </ul>  
+  {% else %}
+    <h3>No unfinished tasks!</h3>
+  {% endif %}
+  <h2>General progress</h2>
+  <div>
+    <ul>
+    {% if tasks %}
+      {% for row in tasks %}
+      <li>
+        <a href="#">{{ row.title }}</a> - {{ row.get_general_realization }}% ready
+        {% if row.has_subtasks %}
+        <ul>
+          {% for sub in row.get_subtasks %}
+          <li>
+            <a href="#">{{ sub.title }}</a> - <p>{{ sub.get_general_estimate }} days ({{ sub.start_date }} - {{ sub.end_date }})</p>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+      {% endfor %}
+    {% endif %}
+      <li><a href="#">Add task</a></li>
+    </ul>
+    <div>
+  {{ project.description }}
+    </div>
+  </div>
+{% endblock %}

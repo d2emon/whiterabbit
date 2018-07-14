@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^answer/', include('answerer.urls', namespace="answerer")),
     url(r'^greet/', include('greet.urls', namespace="greet")),
     url(r'^', include('greet.urls')),
+    url(r'^task/', include('tasks.urls', namespace="tasks")),
 ]

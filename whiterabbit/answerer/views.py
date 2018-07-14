@@ -8,6 +8,5 @@ username = "МихалычЪ"
 
 def index(request):
     return render(request, 'answerer/index.html', {
-        "username": username,
         'answer': Answer.random_item(),
     })

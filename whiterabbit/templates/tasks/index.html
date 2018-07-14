@@ -1,0 +1,13 @@
+{% extends "main/layout.html" %}
+{% block content %}
+  {% if projects %}
+    <ul>
+    {% for project in projects %}
+      <li><a href="{% url "tasks:project" project=project.pk %}">{{ project.title }}</a></li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <h1>You have no active projects!</h1>
+  {% endif %}
+  <a href="{%url "tasks:new_project" %}">New project</a>
+{% endblock %}
